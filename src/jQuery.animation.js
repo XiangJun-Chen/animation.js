@@ -30,11 +30,11 @@
 					});				
 				}else if(str1.indexOf(options.name) > -1) {
 					var	$window = $(window),
-						$document = $(document),
-						windowH = $window.height(),
-						bottomH = $document.height() - windowH,
-						offsetH = $this.offset().top,
-						viewH = offsetH - windowH * .7;
+							$document = $(document),
+							windowH = $window.height(),
+							bottomH = $document.height() - windowH,
+							offsetH = $this.offset().top,
+							viewH = offsetH - windowH * .7;
 						
 					viewH = (viewH > bottomH) ? bottomH : viewH;
 					$this.css("visibility","hidden");
@@ -45,6 +45,11 @@
 						$this.addClass(options.name);
 					}else {
 						$window.scroll(function() {
+							bottomH = $document.height() - windowH,
+							offsetH = $this.offset().top,
+							viewH = offsetH - windowH * .7;
+								
+							viewH = (viewH > bottomH) ? bottomH : viewH;
 							if($window.scrollTop() >= viewH) {
 								$this.css({
 									"visibility": "visible"
